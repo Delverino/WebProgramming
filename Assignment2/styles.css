@@ -91,7 +91,7 @@ a { text-decoration: none; }
     background-color: var(--highlight-color);
     -moz-appearance: button;
     appearance: button;
-    font-weight: 600;
+    font-weight: 600; 
 }
 .big-button:active { border-style: inset; } 
 
