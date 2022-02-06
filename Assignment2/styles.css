@@ -1,0 +1,133 @@
+
+/* Include these in all documents
+        <link href='https://fonts.googleapis.com/css?family=Spline+Sans' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Fauna+One' rel='stylesheet'>
+ */
+:root {
+    --dark-color: rgb(35, 41, 50);
+    --light-color: rgb(238, 238, 238);
+    --tertiary-color: rgb(120, 130, 147);
+    --highlight-color: rgb(214 91 50);
+    --simple-title-font: "Spline Sans";
+    --ornate-title-font: "Cinzel";
+    --main-text-font: "Fauna One";
+}
+body,html {
+    background-color: var(--light-color);
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Fauna One', 'Times New Roman', Times, serif;
+}   
+h1 { font-family: 'Spline Sans', Arial, Helvetica, sans-serif; }
+.fancy { font-family: 'Cinzel', 'Times New Roman', Times, serif; }
+p {
+    text-align: left;
+    /* padding-left: 100px;
+    padding-right: 100px; */
+    line-height: 1.5em;
+}
+li {
+    display: inherit;
+    font-size: inherit;
+} 
+ul.main-nav {
+    display: flex;
+    list-style: none;
+    padding-right: 0;
+    position: absolute;
+    right: 0px;
+    top: 40px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
+}
+ul.bottom-nav {
+    display: flex;
+    padding-left: 10px;
+    margin-top: 0;
+    position: absolute;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+#right-nav {
+    display: flex;
+    align-items: flex-end;
+    left: auto;
+    right: 0;
+}
+li.main-nav {
+    margin: 10px; 
+    color: var(--light-color)
+}
+div.header {
+    height: 100px; 
+    background-color: var(--dark-color); 
+    margin: 0px
+}
+.footer{
+    height: 100px;
+    background-color: var(--dark-color);
+    /* position: sticky; */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+body,html { 
+    margin: 0px; 
+    align-self: center;
+}
+a { text-decoration: none; }
+a.big-button {
+    padding: 20px 20px;
+    border-radius: 30px;
+    color: var(--ligh-color);
+    background-color: var(--highlight-color);
+    -moz-appearance: button;
+    appearance: button;
+    font-weight: 600;
+}
+
+a.big-button:active { border-style: inset; }
+.banner {
+    height: 200px;
+    background-color:var(--tertiary-color);
+    position: relative;
+    text-align: center;
+}
+.skull {
+    background-image: url("images/SkullWall.jpg");
+    background-repeat: repeat-x;
+    background-size: 500px;
+}
+.small{
+    height: 30px;
+}
+.middle-image { height: inherit; }
+.image-faker {  
+    height: inherit;   
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);}
+.top-left-text {
+    position: absolute;
+    top: 20px;
+    left: -90px;
+    font-size: larger;
+    color: var(--light-color);
+}
+.logo { height:  80px;
+        position: absolute;
+        left: 30px;
+        top: 9px
+}
+.text-box {
+    margin: auto;
+    width: 500px;
+}

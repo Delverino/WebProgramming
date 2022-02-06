@@ -4,102 +4,7 @@
         <link href='https://fonts.googleapis.com/css?family=Spline+Sans' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Fauna+One' rel='stylesheet'>
-
-        <style type = text/css>
-            :root {
-                --dark-color: rgb(35, 41, 50);
-                --light-color: rgb(238, 238, 238);
-                --tertiary-color: rgb(120, 130, 147);
-                --highlight-color: rgb(214, 91, 50);
-                --simple-title-font: "Spline Sans";
-                --ornate-title-font: "Cinzel";
-                --main-text-font: "Fauna One"
-            }
-            body,html {
-                background-color: var(--light-color);
-                text-align: center;
-                text-decoration: none;
-                font-family: 'Fauna One', 'Times New Roman', Times, serif;
-            }   
-            h1 { font-family: 'Spline Sans', Arial, Helvetica, sans-serif; }
-            .fancy { font-family: 'Cinzel', 'Times New Roman', Times, serif; }
-            li {
-                display: inherit;
-                font-size: inherit;
-            } 
-            ul.main-nav {
-                display: flex;
-                list-style: none;
-                padding-right: 0;
-                position: absolute;
-                right: 0px;
-                /* bottom: 10px; */
-                top: 40px;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                align-content: space-around;
-                justify-content: space-evenly;
-                align-items: center;
-            }
-            li.main-nav {
-                margin: 10px; 
-                color: var(--light-color)
-            }
-            div.header {
-                height: 100px; 
-                background-color: var(--dark-color); 
-                margin: 0px
-            }
-            .footer{
-                height: 100px;
-                background-color: var(--dark-color);
-                position: fixed;
-                left: 0;
-                bottom: 0;
-                width: 100%;
-            }
-            body,html { 
-                margin: 0px; 
-                align-self: center;
-            }
-            a { text-decoration: none; }
-            a.big-button {
-                padding: 20px 20px;
-                border-radius: 30px;
-                color: var(--dark-color);
-                background-color: var(--highlight-color);
-                -moz-appearance: button;
-                appearance: button;
-                font-weight: 600;
-            }
-
-            a.big-button:active { border-style: inset; }
-            .banner {   
-                height: 200px; 
-                background-color:var(--tertiary-color);  
-                position: relative; 
-                text-align: center;
-            }
-            .middle-image { height: inherit; }
-            .image-faker {  
-                height: inherit;   
-                position: absolute;
-                top: 50%; 
-                left: 50%; 
-                transform: translate(-50%, -50%);}
-            .top-left-text {
-                position: absolute;
-                top: 20px;
-                left: -90px;
-                font-size: larger;
-                color: var(--light-color)
-            }
-            .logo { height:  80px;
-                    position: absolute;
-                    left: 30px;
-                    top: 10px
-            }
-        </style>
+        <link href="styles.css" rel="stylesheet">
     </head>
     <body>
         <div class="header">
@@ -109,25 +14,44 @@
             <ul class = "main-nav">
                 <a href="index.html"><li class = "main-nav">Home</li></a>
                 <a href="index.html"><li class = "main-nav">Contact</li></a>
-                <a href="index.html"><li class = "main-nav">Services</li></a>
+                <a href="services.html"><li class = "main-nav">Services</li></a>
             </ul>
         </div>
         <h1>Welcome to <br/> <span class = "fancy">the ninth house!</span></h1>
+        <div class = "banner skull small"></div>
+        <div class="text-box">
+            <h2>Home of the Locked Tomb</h2>
+            <h2>Final planet of The Resurrection</h2>
+            <h2>Ready for your holiday getaway</h2>
+        </div>  
         <div class = "banner">
             <img src="images/QuizzicalSkely.jpg" alt="A skeleton looking curious" class = "middle-image">
             <span class = "image-faker">
                 <div class="top-left-text">Why<br/>visit?</div>
             </span>
         </div>
-        
-        <h2>Beautiful Drearbruh</h2>
-        <p>Our historic drearbruh castle! Just look at reviews from pleased past guests</p>
-        <p>"Minimal heating to sustain a human being"</p>
-        <p>"Technically edible food"</p>
-        <p>"You get used to the skeletons after a while"</p>
-        <a href="" class = "big-button">Book a Reservation</a>
+        <div class = "text-box">
+            <h2>Business or Pleasure</h2>
+            <p>The ninth house has plenty to do: try attending a high ceremony, participating in a poetry workshop by our cavalier, or just relax and let our skeletons take care of you. </p>
+            <div class = "small"></div>
+            <h2>Beautiful Drearbruh</h2>
+            <p>Our historic drearbruh castle! Just look at reviews from pleased past guests</p>
+            <p>"Minimal heating to sustain a human being"</p>
+            <p>"Technically edible food"</p>
+            <p>"You get used to the skeletons after a while"</p>
+        </div>
+        <!-- TODO fix button -->
+        <a href="contact.html" class = "big-button">Book Your Stay</a>
+        <div class = "small"></div>
         <div class=footer>
-            
+            <ul class="bottom-nav">
+                <a href="tel:9999999999"><li class="main-nav">999-999-9999</li></a>
+                <a href="mailto:revdaughter@gaius.net"><li class="main-nav">revdaughter@gaius.net</li></a>
+            </ul>
+            <ul class="bottom-nav" id="right-nav">
+                <a href="https://thelockedtomb.fandom.com/wiki/Gideon_the_Ninth_(Novel)" target="_blank"><li class="main-nav">Wiki</li></a>
+                <a href="http://tamsynmuir.com/" target="_blanks"><li class="main-nav">Tamsyn Muir</li></a>
+            </ul>
         </div>
     </body>
 
