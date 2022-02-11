@@ -22,11 +22,11 @@ body,html {
 }   
 h1 { font-family: 'Spline Sans', Arial, Helvetica, sans-serif; }
 .fancy { font-family: 'Cinzel', 'Times New Roman', Times, serif; }
-p {
+p, input, textarea {
     text-align: left;
-    /* padding-left: 100px;
-    padding-right: 100px; */
     line-height: 1.5em;
+    align-items: left;
+    display: block;
 }
 li {
     display: inherit;
@@ -64,7 +64,8 @@ ul.bottom-nav {
 }
 li.main-nav {
     margin: 10px; 
-    color: var(--light-color)
+    color: var(--light-color);
+    font-size: 22px
 }
 div.header {
     height: 100px; 
@@ -74,14 +75,18 @@ div.header {
 .footer{
     height: 100px;
     background-color: var(--dark-color);
-    /* position: sticky; */
     left: 0;
     bottom: 0;
     width: 100%;
 }
-body,html { 
-    margin: 0px; 
-    align-self: center;
+body,html {
+    margin: 0px;
+    text-align: center;
+}
+div#page-parent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 a { text-decoration: none; }
 .big-button {
@@ -129,7 +134,11 @@ a { text-decoration: none; }
         left: 30px;
         top: 9px
 }
-.text-box {
-    margin: auto;
-    width: 600px;
+.text-box, form {
+    width: 90%;
+    max-width: 600px;
+}
+@media (max-width: 450px) {
+    a:first-child li{display:none}
+    .footer{display:none}
 }
