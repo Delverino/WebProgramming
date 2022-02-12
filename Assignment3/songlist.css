@@ -14,9 +14,11 @@ Album {
     max-width: 1000px;
     margin-left: 10%;
     margin-top: 30px;
+    margin-bottom: 50px;
     background-color: var(--light-color);
     color: var(--dark-color);
     font-family: "Varela Round";
+
 }
 
 Song{
