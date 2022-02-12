@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="songlist.css" type="text/css"?>
+<Album> The Covers Record, Cat Power
+    <Song> <!-- Song Start -->
+        <Title>(I Can't Get No) Satisfaction</Title>
+        <Artists>
+            <Artist>The Rolling Stones</Artist>
+        </Artists>
+        <Genres>
+            <Genre>Pop</Genre>
+            <Genre>Rock</Genre>
+        </Genres>
+        <Year>2015</Year>
+    </Song>
+    <Song> <!-- Song Start -->
+        <Title>Kingsport Town</Title>
+        <Artists>
+            <Artist>Bob Dylan</Artist>
+        </Artists>
+        <Genres>
+            <Genre>Folk</Genre>
+        </Genres>
+        <Year>1991</Year>
+    </Song>
+    <Song> <!-- Song Start -->
+        <Title>Troubled Waters</Title>
+        <Artists>
+            <Artist>Helen Merrill</Artist>
+        </Artists>
+        <Genres>
+            <Genre>Folk</Genre>
+        </Genres>
+        <Year>1955</Year>
+    </Song>
+    <Song> <!-- Song Start -->
+        <Title>Naked, If I Want To</Title>
+        <Artists>
+            <Artist>Cat Power</Artist>
+        </Artists>
+        <Genres>
+            <Genre>Pop</Genre>
+            <Genre>Rock</Genre>
+        </Genres>
+        <Year>2007</Year>
+    </Song>
+    <Song> <!-- Song Start -->
+        <Title>Sweedeedee</Title>
+        <Artists>
+            <Artist>Michael Hurley</Artist>
+        </Artists>
+        <Genres>
+            <Genre>Folk</Genre>
+        </Genres>
+        <Year>1970</Year>
+    </Song>
+    <Song> <!-- Song Start -->
+        <Title>In This Hole</Title>
+        <Artists>
+            <Artist>Cat Power</Artist>
+        </Artists>
+        <Genres>
+            <Genre>Pop</Genre>
+            <Genre>Rock</Genre>
+        </Genres>
+        <Year>1996</Year>
+    </Song>
+    <Song> <!-- Song Start -->
+        <Title>I Found A Reason</Title>
+        <Artists>
+            <Artist>The Velvet Underground</Artist>
+        </Artists>
+        <Genres>
+            <Genre>Pop</Genre>
+            <Genre>Rock</Genre>
+        </Genres>
+        <Year>1970</Year>
+    </Song>
+    <Song> <!-- Song Start -->
+        <Title>Wild is the Wind</Title>
+        <Artists>
+            <Artist>Johnny Mathis</Artist>
+        </Artists>
+        <Genres>
+            <Genre>Soft Rock</Genre>
+        </Genres>
+        <Year>1957</Year>
+    </Song>
+    <Song> <!-- Song Start -->
+        <Title>Red Apples</Title>
+        <Artists>
+            <Artist>Cat Power</Artist>
+        </Artists>
+        <Genres>
+            <Genre>Pop</Genre>
+            <Genre>Rock</Genre>
+        </Genres>
+        <Year></Year>
+    </Song>
+    <Song> <!-- Song Start -->
+        <Title>Paths of Victory</Title>
+        <Artists>
+            <Artist>Bob Dylan</Artist>
+        </Artists>
+        <Genres>
+            <Genre>Folk</Genre>
+        </Genres>
+        <Year>1991</Year>
+    </Song>
+    <Song> <!-- Song Start -->
+        <Title>Salty Dog</Title>
+        <Artists>
+            <Artist>Mississippi John Hurt</Artist>
+        </Artists>
+        <Genres>
+            <Genre>Blues</Genre>
+        </Genres>
+        <Year>1963</Year>
+    </Song>
+    <Song> <!-- Song Start -->
+        <Title>Sea of Love</Title>
+        <Artists>
+            <Artist>Phil Phillips</Artist>
+            <Artist>The Twilights</Artist>
+        </Artists>
+        <Genres>
+            <Genre>R &amp; B</Genre>
+            <Genre>Pop</Genre>
+            <Genre>Rock</Genre>
+        </Genres>
+        <Year>1975</Year>
+    </Song>
+</Album>
