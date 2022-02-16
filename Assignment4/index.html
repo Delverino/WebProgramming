@@ -7,14 +7,10 @@
             margin-left: 30px;
             margin-top: 25px;
             background-color: #f1f0e5;
-            /* color: #6A2C70; */
         }
         hr{
             width: 400px;
             margin-left: 0;
-        }
-        table, td{
-            /* border: 1px solid black; */
         }
         td{
             padding-right: 20px;
@@ -25,14 +21,27 @@
 <body>
     <h1>Your Order</h1>
     <script language = "javascript">
-        let HOTDOG_COST = 3.75, FRY_COST = 2.0, DRINK_COST = 1.8, TAX_PERCENT = 0.0625;
-        let num_hotdogs = parseInt(prompt("How many hotdogs would you like?"));
-        let num_fries = parseInt(prompt("How many fries would you like?"));
-        let num_sodas = parseInt(prompt("How many sodas would you like?"));
+        // Parse int, except it treats NaN as 0 and negative numbers
+        //           as their absolute value
+        let clean_parse = function(s_input){
+            let i = parseInt(s_input);
+            i = isNaN(i) ? 0 : i;
+            i = i < 0 ? -i : i;
+            return i;
+        }
 
+        // "Consts"
+        let HOTDOG_COST = 3.75, FRY_COST = 2.0, DRINK_COST = 1.8, TAX_PERCENT = 0.0625;
+
+        // User input
+        let num_hotdogs = clean_parse(prompt("How many hotdogs would you like?"));
+        let num_fries = clean_parse(prompt("How many fries would you like?"));
+        let num_sodas = clean_parse(prompt("How many sodas would you like?"));
+
+        // For later display
         let hotdog_subtotal = num_hotdogs * HOTDOG_COST;
-        let fry_subtotal = num_fries   * FRY_COST;
-        let soda_subtotal = num_sodas   * DRINK_COST;
+        let fry_subtotal = num_fries      * FRY_COST;
+        let soda_subtotal = num_sodas     * DRINK_COST;
 
         let subtotal = hotdog_subtotal + fry_subtotal + soda_subtotal;
         
@@ -46,9 +55,11 @@
 
         let final_subtotal = subtotal + tax;
 
+        // Wraps s_val in the tag s_tag
         let wrap_tag = function (s_val, s_tag) {
             return "<" + s_tag + ">" + s_val + "</" + s_tag + ">";
         }
+        // Creates a row of the two strings, for use in a table
         let row = function (s_first, s_last){
             return wrap_tag(wrap_tag(s_first, "td") + wrap_tag(s_last, "td"), "tr")
         }
@@ -56,18 +67,19 @@
             return "$" + f_val.toFixed(2);
         }
 
+        // I know tables aren't technically great HTML style these days 
+        // but it seemed like it worked well for this application
         let table = "<hr>";
         table += row("Hotdogs", num_hotdogs + " * " + money(HOTDOG_COST) + " = " + money(hotdog_subtotal));
         table += row("Fries", num_fries + " * " + money(FRY_COST) + " = " + money(fry_subtotal));
         table += row("Sodas", num_sodas + " * " + money(DRINK_COST) + " = " + money(soda_subtotal));
         table += row("Subtotal", money(subtotal + discount));
-        if(discount) 
+        if(discount) //Only show the offer if you've got it
             table += row("Joe's special offer", money(discount) + " off!");
         table += row("Tax", money(tax));
         table += row("Final total", money(final_subtotal));
         table = wrap_tag(table, "table");
 
         document.write(table);
-
     </script>
 </body>
