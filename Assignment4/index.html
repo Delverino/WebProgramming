@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <head>
     <title>Joe's Hotdogs</title>
+    <style type="text/css">
+        body,html {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-left: 30px;
+            margin-top: 25px;
+            background-color: #f1f0e5;
+            /* color: #6A2C70; */
+        }
+        hr{
+            width: 400px;
+            margin-left: 0;
+        }
+        table, td{
+            /* border: 1px solid black; */
+        }
+        td{
+            padding-right: 20px;
+        }
+
+    </style>
 </head>
 <body>
     <h1>Your Order</h1>
@@ -10,22 +30,44 @@
         let num_fries = parseInt(prompt("How many fries would you like?"));
         let num_sodas = parseInt(prompt("How many sodas would you like?"));
 
-        let subtotal = num_hotdogs * HOTDOG_COST + 
-                       num_fries   * FRY_COST +
-                       num_sodas   * DRINK_COST;
+        let hotdog_subtotal = num_hotdogs * HOTDOG_COST;
+        let fry_subtotal = num_fries   * FRY_COST;
+        let soda_subtotal = num_sodas   * DRINK_COST;
+
+        let subtotal = hotdog_subtotal + fry_subtotal + soda_subtotal;
         
         let discount = 0;
-
         if(subtotal >= 20){
             discount = subtotal * 0.1;
             subtotal -= discount;
         }
 
-        let tax = subtotal * TAX_PERCENT;
+        let tax = (subtotal * TAX_PERCENT);
 
         let final_subtotal = subtotal + tax;
 
-        document.write("Hotdogs Ordered: \t" + num_hotdogs);
-        
+        let wrap_tag = function (s_val, s_tag) {
+            return "<" + s_tag + ">" + s_val + "</" + s_tag + ">";
+        }
+        let row = function (s_first, s_last){
+            return wrap_tag(wrap_tag(s_first, "td") + wrap_tag(s_last, "td"), "tr")
+        }
+        let money = function(f_val){
+            return "$" + f_val.toFixed(2);
+        }
+
+        let table = "<hr>";
+        table += row("Hotdogs", num_hotdogs + " * " + money(HOTDOG_COST) + " = " + money(hotdog_subtotal));
+        table += row("Fries", num_fries + " * " + money(FRY_COST) + " = " + money(fry_subtotal));
+        table += row("Sodas", num_sodas + " * " + money(DRINK_COST) + " = " + money(soda_subtotal));
+        table += row("Subtotal", money(subtotal + discount));
+        if(discount) 
+            table += row("Joe's special offer", money(discount) + " off!");
+        table += row("Tax", money(tax));
+        table += row("Final total", money(final_subtotal));
+        table = wrap_tag(table, "table");
+
+        document.write(table);
+
     </script>
 </body>
