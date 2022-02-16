@@ -3,16 +3,29 @@
     <title>Joe's Hotdogs</title>
 </head>
 <body>
+    <h1>Your Order</h1>
     <script language = "javascript">
-        let HOTDOG_COST = 3.75, FRY_COST = 2.0, DRINK_COST = 1.8;
-        let num_hotdogs = prompt("How many hotdogs would you like?");
-        let num_fries = prompt("How many fries would you like?");
-        let num_sodas = prompt("How many sodas would you like?");
+        let HOTDOG_COST = 3.75, FRY_COST = 2.0, DRINK_COST = 1.8, TAX_PERCENT = 0.0625;
+        let num_hotdogs = parseInt(prompt("How many hotdogs would you like?"));
+        let num_fries = parseInt(prompt("How many fries would you like?"));
+        let num_sodas = parseInt(prompt("How many sodas would you like?"));
 
         let subtotal = num_hotdogs * HOTDOG_COST + 
                        num_fries   * FRY_COST +
                        num_sodas   * DRINK_COST;
         
+        let discount = 0;
+
+        if(subtotal >= 20){
+            discount = subtotal * 0.1;
+            subtotal -= discount;
+        }
+
+        let tax = subtotal * TAX_PERCENT;
+
+        let final_subtotal = subtotal + tax;
+
+        document.write("Hotdogs Ordered: \t" + num_hotdogs);
         
     </script>
 </body>
