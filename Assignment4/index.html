@@ -15,7 +15,6 @@
         td{
             padding-right: 20px;
         }
-
     </style>
 </head>
 <body>
@@ -30,20 +29,22 @@
             return i;
         }
 
-        // "Consts"
-        let HOTDOG_COST = 3.75, FRY_COST = 2.0, DRINK_COST = 1.8, TAX_PERCENT = 0.0625;
+        // "Const"
+        TAX_PERCENT = 0.0625;
 
+        //sfa stands for string float array
+        let sfa_foodcost = {"Hotdogs": 3.75, "Fries": 2.0, "Sodas": 1.8};
         // User input
-        let num_hotdogs = clean_parse(prompt("How many hotdogs would you like?"));
-        let num_fries = clean_parse(prompt("How many fries would you like?"));
-        let num_sodas = clean_parse(prompt("How many sodas would you like?"));
+        let sfa_foodamount = [];
+        sfa_foodamount["Hotdogs"] = clean_parse(prompt("How many hotdogs would you like?"));
+        sfa_foodamount["Fries"] = clean_parse(prompt("How many fries would you like?"));
+        sfa_foodamount["Sodas"] = clean_parse(prompt("How many sodas would you like?"));
 
         // For later display
-        let hotdog_subtotal = num_hotdogs * HOTDOG_COST;
-        let fry_subtotal = num_fries      * FRY_COST;
-        let soda_subtotal = num_sodas     * DRINK_COST;
-
-        let subtotal = hotdog_subtotal + fry_subtotal + soda_subtotal;
+        let subtotal = 0;
+        for(foodname in sfa_foodamount){
+            subtotal += sfa_foodamount[foodname] * sfa_foodcost[foodname];
+        }
         
         let discount = 0;
         if(subtotal >= 20){
@@ -55,7 +56,7 @@
 
         let final_subtotal = subtotal + tax;
 
-        // Wraps s_val in the tag s_tag
+        // Wraps s_val in the tag 's_tag'
         let wrap_tag = function (s_val, s_tag) {
             return "<" + s_tag + ">" + s_val + "</" + s_tag + ">";
         }
@@ -70,16 +71,17 @@
         // I know tables aren't technically great HTML style these days 
         // but it seemed like it worked well for this application
         let table = "<hr>";
-        table += row("Hotdogs", num_hotdogs + " * " + money(HOTDOG_COST) + " = " + money(hotdog_subtotal));
-        table += row("Fries", num_fries + " * " + money(FRY_COST) + " = " + money(fry_subtotal));
-        table += row("Sodas", num_sodas + " * " + money(DRINK_COST) + " = " + money(soda_subtotal));
+        for(foodname in sfa_foodamount){
+            let amount = sfa_foodamount[foodname];
+            let cost = sfa_foodcost[foodname];
+            table += row(foodname, amount + " * " + money(cost) + " = " + money(cost * amount));
+        }
         table += row("Subtotal", money(subtotal + discount));
         if(discount) //Only show the offer if you've got it
             table += row("Joe's special offer", money(discount) + " off!");
         table += row("Tax", money(tax));
         table += row("Final total", money(final_subtotal));
-        table = wrap_tag(table, "table");
 
-        document.write(table);
+        document.write(wrap_tag(table, "table"));
     </script>
 </body>
