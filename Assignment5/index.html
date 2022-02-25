@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<head>
+    <title>Lucky Ball Lottery</title>
+    <style type="text/css">
+        body,html {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-left: 30px;
+            margin-top: 25px;
+            background-color: #f1f0e5;
+        }
+        hr{
+            width: 400px;
+            margin-left: 0;
+        }
+        td{
+            padding-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lucky Ball Lottery</h1>
+    <script language = "javascript">
+        //Note for the grader: I like to include "type" information in my variable names
+        //   because I'm used to typed languages. i_NAME means it's an int, ia_NAME is
+        //   an int array, f means function, etc.
+
+
+        //Returns a function which returns a random number between
+        //  1 and i_max inclusive
+        f_randFunction = function (i_max){
+            return function () {
+                return parseInt(Math.random() * i_max) + 1
+            };
+        }
+        f_randBall = f_randFunction(48);
+        f_randLuckyBall = f_randFunction(18);
+        //Consts
+        var IA_WINNING_PICKS = [12, 15, 24, 35, 48];
+        var I_WINNING_LUCKY = 3;
+
+        //Represents a drawing of balls for the lottery, with an array of balls and a lucky one.
+        function Balls(_ia_picks, _i_lucky){
+            this.ia_picks = _ia_picks;
+            this.i_lucky = _i_lucky;
+            //Randomly populates this struct, overwriting previous values
+            this.f_populate = function(){
+                for(let i = 0; i < this.ia_picks.length; i++) this.ia_picks[i] = f_randBall();
+                this.i_lucky = f_randLuckyBall();
+            }
+            this.f_sort = function(){
+                this.ia_picks.sort((a, b) => a - b);
+            }
+            //Returns a string summarizing the contents of this struct
+            this.f_summarize = function(){
+                return this.ia_picks.join(", ") + " lucky " + this.i_lucky;
+            }
+            //Returns true if other has the same value for lucky, false otherwise
+            // Other should be another ball struct
+            this.f_lucky_matches = function(other){
+                return other.i_lucky === this.i_lucky;
+            }
+            //Returns the number of balls which match other
+            // Other should be another ball struct
+            this.f_num_matches = function(other){
+                sum = 0;
+                for(let i = 0; i < this.ia_picks.length; i++){
+                    if(other.ia_picks.includes(this.ia_picks[i])){
+                        sum++;
+                    }
+                }
+                return sum;
+            }
+        }
+
+        f_winnings = function(_i_num_matches, _b_lucky_matches){
+            switch(_i_num_matches){
+                case 0:
+                    return _b_lucky_matches ? "4" : "0";
+                case 1:
+                    return _b_lucky_matches ? "6" : "0";
+                case 2:
+                    return _b_lucky_matches ? "25" : "3";
+                case 3:
+                    return _b_lucky_matches ? "150" : "20";
+                case 4:
+                    return _b_lucky_matches ? "5,000" : "200";
+                case 5:
+                    return _b_lucky_matches ? "7,000 a WEEK for LIFE" : "25,000 a WEEK for LIFE";
+            }
+        }
+
+        window.onload = function (){
+            winning_balls = new Balls(IA_WINNING_PICKS, I_WINNING_LUCKY);
+            your_balls = new Balls(new Array(5), 0);
+            your_balls.f_populate();
+            document.getElementById("pick").innerHTML = your_balls.f_summarize();
+        
+            your_balls.f_sort();
+            document.getElementById("pick_sorted").innerHTML = your_balls.f_summarize();
+            document.getElementById("winning_numbers").innerHTML = winning_balls.f_summarize();
+            i_num_matching = your_balls.f_num_matches(winning_balls);
+            document.getElementById("matched").innerHTML = i_num_matching;
+            b_lucky_matches = your_balls.f_lucky_matches(winning_balls)
+            document.getElementById("lucky_matches").innerHTML = 
+                            (b_lucky_matches) ? "matches" : "doesn't match";
+
+            document.getElementById("winnings").innerHTML = f_winnings(i_num_matching, b_lucky_matches);
+        }
+        
+    </script>
+    <p>My pick: <span id="pick">wow</span></p>
+    <p>My pick sorted: <span id="pick_sorted"></span></p>
+    <p>Winning numbers: <span id="winning_numbers"></span></p>
+    <p>Numbers matching: <span id="matched"></span></p>
+    <p>Lucky ball <span id="lucky_matches"></span></p>
+    <p>Your winnings: $<span id="winnings"></span></p>
+</body>
