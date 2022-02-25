@@ -44,7 +44,14 @@
             this.i_lucky = _i_lucky;
             //Randomly populates this struct, overwriting previous values
             this.f_populate = function(){
-                for(let i = 0; i < this.ia_picks.length; i++) this.ia_picks[i] = f_randBall();
+                for(let i = 0; i < this.ia_picks.length; i++){
+                    //Picks until it gets one that isn't a duplicate
+                    do{
+                        var i_possible =  f_randBall();
+                    } while (this.ia_picks.includes(i_possible))
+                    this.ia_picks[i] = i_possible;
+                }
+                 
                 this.i_lucky = f_randLuckyBall();
             }
             this.f_sort = function(){
