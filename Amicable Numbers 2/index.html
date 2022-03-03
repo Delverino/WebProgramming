@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+    <title>Amicable Numbers</title>
+    <style type="text/css">
+        body,html {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-left: 30px;
+            margin-top: 25px;
+            background-color: #f1f0e5;
+        }
+        hr{
+            width: 400px;
+            margin-left: 0;
+        }
+        td{
+            padding-right: 20px;
+        }
+        input, button{
+            display: inherit;
+            margin: 10px;
+        }
+        div#answer, div#factors{
+            margin: 10px;
+            margin-top: 30px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Amicable Numbers</h1>
+    <script language = "javascript">
+        // Parse int, except it treats NaN as 0 and negative numbers
+        //           as their absolute value
+        let f_clean_parse = function(s_input){
+            let i = parseInt(s_input);
+            i = isNaN(i) ? 0 : i;
+            i = i < 0 ? -i : i;
+            return i;
+        }
+        // Returns if i_denom divides i_num evenly AKA if i_denom is a factor
+        //      of i_num.
+        let f_divides = function(i_num, i_denom){
+            return !(i_num % i_denom);
+        }
+        // Returns an array of factors of n, excluding n.
+        let f_factors = function (n){
+            let factors = [];
+            for(let i = 1; i <= n/2; i++){
+                if(f_divides(n, i))
+                    factors.push(i);
+            }
+            return factors;
+        }
+        let sum = function (ia){
+            return ia.reduce(function (acc, x){return acc + x}, 0);
+        }
+        // Returns true if i_one and i_two are amicable, false if not
+        let f_amicable = function(i_one, i_two){
+            let one_factors = f_factors(i_one);
+            let two_factors = f_factors(i_two);
+            let b_forward = sum(one_factors) === i_two;
+            let b_back = sum(two_factors) === i_one;
+            document.getElementById("factors").innerHTML = 
+                "Factors of the first number: " + one_factors.join(", ") + 
+                ". <br>Factors of the second number: " + two_factors.join(", ") + "."
+            return (b_forward && b_back);
+        }
+        
+        function validate(){
+            let i_one = f_clean_parse(document.getElementById("input1").value);
+            let i_two = f_clean_parse(document.getElementById("input2").value);
+            
+            document.getElementById("answer").innerHTML = "The numbers: " + 
+                        i_one + " and " + i_two + " are " 
+                        + (f_amicable(i_one, i_two) ? "amicable" : "not amicable");
+            return false; //don't want to reload the page
+        }
+        
+    </script>
+    <form name = "amicable_form" method="post" onsubmit = "return validate()">
+        <input type="number" id="input1" value="1">
+        <input type="number" id="input2" value="1">
+        <button type="submit" id="amicable_button">Submit</button>
+    </form>
+    <div id="answer"></div>
+    <div id="factors"></div>
+</body>
