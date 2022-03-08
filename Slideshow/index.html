@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta keyword="Cats, Slideshow">
+        <title>Cat Slideshow</title>
+        <style>
+            body,html {
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                margin-left: 30px;
+                margin-top: 25px;
+                background-color: #f1f0e5;
+            }
+            hr{
+                width: 400px;
+                margin-left: 0;
+            }
+            td{
+                padding-right: 20px;
+            }
+        </style>
+        <style>
+            text-box {
+                display: inline-block;
+            }
+            .slideshow{
+                height:400px;
+                width: 638.5px;
+                margin: auto;
+                position:relative;
+                background: black;
+                text-align-last: center;
+                border: black 2px solid;
+            }
+            .slideshow button{
+                font-size:40px;
+                color:var(--light-color);
+                background-color: var(--dark-color);
+                /* opacity: 0.8; */
+                width: 120px;
+                height: 70px;
+                position: absolute;
+                left: -2px;
+                bottom: -100px;
+            }
+            #right-button {
+                left:auto;
+                right:-2px;
+            }
+            p {
+                font-size: 20px;
+            }
+        </style>
+        <script
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+        <script>
+            let curr = 0;
+            let images = ["cat (1).jpg","cat (2).jpg","cat (3).jpg","cat (4).jpg","cat (5).jpg",];
+            let fading = false;
+            function fadeout(){
+                curr += 1;
+                curr += images.length;
+                curr = curr % images.length;
+                $(".slide").fadeOut(1000, fadein)
+            }
+            function fadein(){
+                $(".slide").attr("src", "images/"+images[curr]);
+                $(".slide").fadeTo(2000, 1, function(){
+                    if(fading){
+                        fadeout();
+                    }
+                })
+
+            }
+            $(document).ready(function(){
+                $("button").click(function () {
+                    if($(this).attr("id") == "right-button" && fading){
+                        fading = false;
+                    }
+                    if($(this).attr("id") == "left-button" && !fading){
+                        fading = true
+                        fadeout();
+                    }
+                })
+                $(".dropbtn").click(function(){
+                    $(myDropdown).toggle(100);
+                });
+                $(window).click(function(e){
+                    if (!e.target.matches('.dropbtn')) {
+                        $(myDropdown).hide(100);
+                    }
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div id="page-parent">
+            <div class="text-box">
+                <div class="slideshow">
+                    <img class="slide" src="images/cat (1).jpg" height="400px">
+                    <button id="right-button">
+                        Stop
+                    </button>
+                    <button id="left-button">
+                        Start
+                    </button>
+                </div>
+    </body>
+</html>
