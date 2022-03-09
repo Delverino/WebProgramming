@@ -17,23 +17,215 @@
         }
     </style>
 </head>
-    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-</head>
-
 <body>
-    <script language="javascript">
-    $.get( "https://delverino.github.io/WebProgramming/Assignment6/CatPowersSongList.json", 
-        function( data ) {
-            str = JSON.stringify(data);
-            document.write(str +"<br/>");
-    //     strHTML= "<ul>";
-    //     data.forEach(function(animal) { 
-    //     strHTML += "<li>" 
-    //             + animal.name + " : " 
-    //             + animal.type + "</li>";
-    //         }) 
-    // strHTML += "</ul>";
-    // document.write (strHTML);  /**/
-    })
+	<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+    <script>
+    var album;
+    fetch("CatPowersSongList.json")
+        .then(function(album){
+            var genres = [];
+            document.write(JSON.stringify(album));
+            document.write("<hr>");
+            function println(s){
+                document.write(s + "<br />");
+            }
+            function pretty_print(song){
+                println(song.Title);
+                println("Artist(s): " + song.Artists.Artist);
+                println("Genre(s): " + song.Genres.join(", "));
+                println("Released: " + song.Year);
+                println("");
+            }
+            // returns the title of a song if it matches the genre, 
+            //      otherwise the empty string
+            function title_if_matching_genre(song, s_genre){
+                if(song.Genres.indexOf(s_genre) >= 0){
+                    return song.Title + "<br />"; 
+                } else {
+                    return "";
+                }
+            }
+            function genre_display(s_genre){
+                acc = "";
+                album.Songs.forEach(function(song){
+                    acc += title_if_matching_genre(song, s_genre);
+                });
+                document.getElementById("display").innerHTML = acc;
+            }
+            //Just a function to call genre display with the right genre, 
+            //      used by the form.
+            function call_genre_display(){
+                genre = genres[document.form.genre_filter.selectedIndex];
+                console.log(genre);
+                genre_display(genre);
+                return false;
+            }
+            //Adds the genres of the song that aren't already on the list
+            function add_to_genre(song){
+                song.Genres.forEach(function(s){
+                    if(genres.indexOf(s) == -1) genres.push(s);
+                })
+            }
+            album.Songs.forEach(function(song){
+                pretty_print(song);
+                add_to_genre(song); 
+            });
+        })
+        .catch(err => console.log(err));
+    
+// album = {
+//     "Songs": [
+//         {
+//             "Title": "(I Can't Get No) Satisfaction",
+//             "Artists": {
+//             "Artist": "The Rolling Stones"
+//             },
+//             "Genres": [
+//                 "Pop",
+//                 "Rock"
+//             ],
+//             "Year": "2015"
+//         },
+//         {
+//             "Title": "Kingsport Town",
+//             "Artists": {
+//             "Artist": "Bob Dylan"
+//             },
+//             "Genres": [
+//                 "Folk"
+//             ],
+//             "Year": "1991"
+//         },
+//         {
+//             "Title": "Troubled Waters",
+//             "Artists": {
+//             "Artist": "Helen Merrill"
+//             },
+//             "Genres": [
+//                 "Folk"
+//             ],
+//             "Year": "1955"
+//         },
+//         {
+//             "Title": "Naked, If I Want To",
+//             "Artists": {
+//             "Artist": "Cat Power"
+//             },
+//             "Genres": [
+//                 "Pop",
+//                 "Rock"
+//             ],
+//             "Year": "2007"
+//         },
+//         {
+//             "Title": "Sweedeedee",
+//             "Artists": {
+//             "Artist": "Michael Hurley"
+//             },
+//             "Genres": [
+//                 "Folk"
+//             ],
+//             "Year": "1970"
+//         },
+//         {
+//             "Title": "In This Hole",
+//             "Artists": {
+//             "Artist": "Cat Power"
+//             },
+//             "Genres": [
+//                 "Pop",
+//                 "Rock"
+//             ],
+//             "Year": "1996"
+//         },
+//         {
+//             "Title": "I Found A Reason",
+//             "Artists": {
+//             "Artist": "The Velvet Underground"
+//             },
+//             "Genres": [
+//                 "Pop",
+//                 "Rock"
+//             ],
+//             "Year": "1970"
+//         },
+//         {
+//             "Title": "Wild is the Wind",
+//             "Artists": {
+//             "Artist": "Johnny Mathis"
+//             },
+//             "Genres": [
+//                 "Soft Rock"
+//             ],
+//             "Year": "1957"
+//         },
+//         {
+//             "Title": "Red Apples",
+//             "Artists": {
+//             "Artist": "Cat Power"
+//             },
+//             "Genres": [
+//                 "Pop",
+//                 "Rock"
+//             ],
+//             "Year": ""
+//         },
+//         {
+//             "Title": "Paths of Victory",
+//             "Artists": {
+//             "Artist": "Bob Dylan"
+//             },
+//             "Genres": [
+//                 "Folk"
+//             ],
+//             "Year": "1991"
+//         },
+//         {
+//             "Title": "Salty Dog",
+//             "Artists": {
+//             "Artist": "Mississippi John Hurt"
+//             },
+//             "Genres": [
+//                 "Blues"
+//             ],
+//             "Year": "1963"
+//         },
+//         {
+//             "Title": "Sea of Love",
+//             "Artists": {
+//             "Artist": [
+//                 "Phil Phillips",
+//                 "The Twilights"
+//             ]
+//             },
+//             "Genres": [
+//                 "R & B",
+//                 "Pop",
+//                 "Rock"
+//             ],
+//             "Year": "1975"
+//         }
+//     ]
+// };
+
     </script>
+    <hr>
+    <form name="form" method="post" onsubmit="return call_genre_display();">
+        <h2>Filter By Genre</h2>
+        <select name="genre_filter" id="genre_filter">
+            <script>
+                //We populate this list with the genres from the array we built before
+                genres.forEach((s) => document.write("<option id=\"hi\">" + s + "</option>"));
+            </script>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+    <br>
+    <p id="display"></p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </body>

@@ -1,0 +1,134 @@
+{
+    "Songs": [
+        {
+            "Title": "(I Can't Get No) Satisfaction",
+            "Artists": {
+            "Artist": "The Rolling Stones"
+            },
+            "Genres": [
+                "Pop",
+                "Rock"
+            ],
+            "Year": "2015"
+        },
+        {
+            "Title": "Kingsport Town",
+            "Artists": {
+            "Artist": "Bob Dylan"
+            },
+            "Genres": [
+                "Folk"
+            ],
+            "Year": "1991"
+        },
+        {
+            "Title": "Troubled Waters",
+            "Artists": {
+            "Artist": "Helen Merrill"
+            },
+            "Genres": [
+                "Folk"
+            ],
+            "Year": "1955"
+        },
+        {
+            "Title": "Naked, If I Want To",
+            "Artists": {
+            "Artist": "Cat Power"
+            },
+            "Genres": [
+                "Pop",
+                "Rock"
+            ],
+            "Year": "2007"
+        },
+        {
+            "Title": "Sweedeedee",
+            "Artists": {
+            "Artist": "Michael Hurley"
+            },
+            "Genres": [
+                "Folk"
+            ],
+            "Year": "1970"
+        },
+        {
+            "Title": "In This Hole",
+            "Artists": {
+            "Artist": "Cat Power"
+            },
+            "Genres": [
+                "Pop",
+                "Rock"
+            ],
+            "Year": "1996"
+        },
+        {
+            "Title": "I Found A Reason",
+            "Artists": {
+            "Artist": "The Velvet Underground"
+            },
+            "Genres": [
+                "Pop",
+                "Rock"
+            ],
+            "Year": "1970"
+        },
+        {
+            "Title": "Wild is the Wind",
+            "Artists": {
+            "Artist": "Johnny Mathis"
+            },
+            "Genres": [
+                "Soft Rock"
+            ],
+            "Year": "1957"
+        },
+        {
+            "Title": "Red Apples",
+            "Artists": {
+            "Artist": "Cat Power"
+            },
+            "Genres": [
+                "Pop",
+                "Rock"
+            ],
+            "Year": ""
+        },
+        {
+            "Title": "Paths of Victory",
+            "Artists": {
+            "Artist": "Bob Dylan"
+            },
+            "Genres": [
+                "Folk"
+            ],
+            "Year": "1991"
+        },
+        {
+            "Title": "Salty Dog",
+            "Artists": {
+            "Artist": "Mississippi John Hurt"
+            },
+            "Genres": [
+                "Blues"
+            ],
+            "Year": "1963"
+        },
+        {
+            "Title": "Sea of Love",
+            "Artists": {
+            "Artist": [
+                "Phil Phillips",
+                "The Twilights"
+            ]
+            },
+            "Genres": [
+                "R & B",
+                "Pop",
+                "Rock"
+            ],
+            "Year": "1975"
+        }
+    ]
+}
