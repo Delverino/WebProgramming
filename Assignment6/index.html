@@ -24,6 +24,7 @@
     var album;
     fetch("CatPowersSongList.json")
         .then(function(album){
+            test();
             var genres = [];
             document.write(JSON.stringify(album));
             document.write("<hr>");
@@ -215,6 +216,10 @@
         <h2>Filter By Genre</h2>
         <select name="genre_filter" id="genre_filter">
             <script>
+                function test(){
+                    alert("hi");
+                }
+                genres = [];
                 //We populate this list with the genres from the array we built before
                 genres.forEach((s) => document.write("<option id=\"hi\">" + s + "</option>"));
             </script>
