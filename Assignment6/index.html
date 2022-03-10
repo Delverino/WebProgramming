@@ -72,157 +72,24 @@
                 pretty_print(song);
                 add_to_genre(song); 
             });
+            s_acc = "";
+            genres.forEach((s) => s_acc += "<option id=\"hi\">" + s + "</option>");
+            document.getElementById("genre-filter").innerHTML = s_acc
         })
         .catch(err => console.log(err));
-    
-// album = {
-//     "Songs": [
-//         {
-//             "Title": "(I Can't Get No) Satisfaction",
-//             "Artists": {
-//             "Artist": "The Rolling Stones"
-//             },
-//             "Genres": [
-//                 "Pop",
-//                 "Rock"
-//             ],
-//             "Year": "2015"
-//         },
-//         {
-//             "Title": "Kingsport Town",
-//             "Artists": {
-//             "Artist": "Bob Dylan"
-//             },
-//             "Genres": [
-//                 "Folk"
-//             ],
-//             "Year": "1991"
-//         },
-//         {
-//             "Title": "Troubled Waters",
-//             "Artists": {
-//             "Artist": "Helen Merrill"
-//             },
-//             "Genres": [
-//                 "Folk"
-//             ],
-//             "Year": "1955"
-//         },
-//         {
-//             "Title": "Naked, If I Want To",
-//             "Artists": {
-//             "Artist": "Cat Power"
-//             },
-//             "Genres": [
-//                 "Pop",
-//                 "Rock"
-//             ],
-//             "Year": "2007"
-//         },
-//         {
-//             "Title": "Sweedeedee",
-//             "Artists": {
-//             "Artist": "Michael Hurley"
-//             },
-//             "Genres": [
-//                 "Folk"
-//             ],
-//             "Year": "1970"
-//         },
-//         {
-//             "Title": "In This Hole",
-//             "Artists": {
-//             "Artist": "Cat Power"
-//             },
-//             "Genres": [
-//                 "Pop",
-//                 "Rock"
-//             ],
-//             "Year": "1996"
-//         },
-//         {
-//             "Title": "I Found A Reason",
-//             "Artists": {
-//             "Artist": "The Velvet Underground"
-//             },
-//             "Genres": [
-//                 "Pop",
-//                 "Rock"
-//             ],
-//             "Year": "1970"
-//         },
-//         {
-//             "Title": "Wild is the Wind",
-//             "Artists": {
-//             "Artist": "Johnny Mathis"
-//             },
-//             "Genres": [
-//                 "Soft Rock"
-//             ],
-//             "Year": "1957"
-//         },
-//         {
-//             "Title": "Red Apples",
-//             "Artists": {
-//             "Artist": "Cat Power"
-//             },
-//             "Genres": [
-//                 "Pop",
-//                 "Rock"
-//             ],
-//             "Year": ""
-//         },
-//         {
-//             "Title": "Paths of Victory",
-//             "Artists": {
-//             "Artist": "Bob Dylan"
-//             },
-//             "Genres": [
-//                 "Folk"
-//             ],
-//             "Year": "1991"
-//         },
-//         {
-//             "Title": "Salty Dog",
-//             "Artists": {
-//             "Artist": "Mississippi John Hurt"
-//             },
-//             "Genres": [
-//                 "Blues"
-//             ],
-//             "Year": "1963"
-//         },
-//         {
-//             "Title": "Sea of Love",
-//             "Artists": {
-//             "Artist": [
-//                 "Phil Phillips",
-//                 "The Twilights"
-//             ]
-//             },
-//             "Genres": [
-//                 "R & B",
-//                 "Pop",
-//                 "Rock"
-//             ],
-//             "Year": "1975"
-//         }
-//     ]
-// };
-
     </script>
     <hr>
     <form name="form" method="post" onsubmit="return call_genre_display();">
         <h2>Filter By Genre</h2>
         <select name="genre_filter" id="genre_filter">
-            <script>
+            <!-- <script>
                 function test(){
                     alert("hi");
                 }
                 genres = [];
                 //We populate this list with the genres from the array we built before
                 genres.forEach((s) => document.write("<option id=\"hi\">" + s + "</option>"));
-            </script>
+            </script> -->
         </select>
         <button type="submit">Filter</button>
     </form>
