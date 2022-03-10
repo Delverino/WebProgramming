@@ -25,7 +25,6 @@
     fetch("CatPowersSongList.json")
         .then(res => res.text())
         .then(function(data){
-            //test();
             var genres = [];
             album = JSON.parse(data);
             document.getElementById("stringified").innerHTML = JSON.stringify(album);
@@ -75,13 +74,16 @@
                 document.getElementById("pretty-print").innerHTML += pretty_print(song);
                 add_to_genre(song); 
             });
+            //Accumulate the select menu and then set it
             s_acc = "";
             genres.forEach((s) => s_acc += "<option id=\"hi\">" + s + "</option>");
             document.getElementById("genre_filter").innerHTML = s_acc;
+            //Add onclick event to button
             document.getElementById("form-button").addEventListener ("click", call_genre_display, false);
         })
         .catch(err => console.log(err));
-    </script>
+    </script> 
+    <!-- End Code, Start HTML -->
     <hr>
     <form name="form" method="post" onsubmit="return false;">
         <p id="stringified"></p>
@@ -89,15 +91,10 @@
         <p id="pretty-print"></p>
         <h2>Filter By Genre</h2>
         <select name="genre_filter" id="genre_filter">
-            <!-- <script>
-                function test(){
-                    alert("hi");
-                }
-                genres = [];
-                //We populate this list with the genres from the array we built before
-                genres.forEach((s) => document.write("<option id=\"hi\">" + s + "</option>"));
-            </script> -->
+            <!-- This gets populated via javascript -->
         </select>
+        <!-- I couldn't figure out how to use form validation with github pages, 
+                  so I'm using an onclick method. Thanks for understanding :) -->
         <button id="form-button">Filter</button>
     </form>
     <br>
