@@ -24,11 +24,12 @@
     var album;
     fetch("CatPowersSongList.json")
         .then(res => res.text())
-        .then(function(album){
+        .then(function(data){
             //test();
             var genres = [];
+            console.log(data);
+            album = JSON.parse(data);
             console.log(album.Songs);
-            album = JSON.parse(album);
             document.write(JSON.stringify(album));
             document.write("<hr>");
             function println(s){
