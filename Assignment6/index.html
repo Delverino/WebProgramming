@@ -27,21 +27,19 @@
         .then(function(data){
             //test();
             var genres = [];
-            console.log(data);
             album = JSON.parse(data);
-            console.log(album)
-            console.log(album.Songs);
-            document.write(JSON.stringify(album));
-            document.write("<hr>");
+            document.getElementById("stringified").innerHTML = JSON.stringify(album);
             function println(s){
-                document.write(s + "<br />");
+                return s + "<br />";
             }
             function pretty_print(song){
-                println(song.Title);
-                println("Artist(s): " + song.Artists.Artist);
-                println("Genre(s): " + song.Genres.join(", "));
-                println("Released: " + song.Year);
-                println("");
+                let s = "";
+                s += println(song.Title);
+                s += println("Artist(s): " + song.Artists.Artist);
+                s += println("Genre(s): " + song.Genres.join(", "));
+                s += println("Released: " + song.Year);
+                s += println("");
+                return s;
             }
             // returns the title of a song if it matches the genre, 
             //      otherwise the empty string
@@ -57,7 +55,7 @@
                 album.Songs.forEach(function(song){
                     acc += title_if_matching_genre(song, s_genre);
                 });
-                document.getElementById("display").innerHTML = acc;
+                document.getElementById("genre-display").innerHTML = acc;
             }
             //Just a function to call genre display with the right genre, 
             //      used by the form.
@@ -74,7 +72,7 @@
                 })
             }
             album.Songs.forEach(function(song){
-                pretty_print(song);
+                document.getElementById("pretty-print").innerHTML += pretty_print(song);
                 add_to_genre(song); 
             });
             s_acc = "";
@@ -85,6 +83,9 @@
     </script>
     <hr>
     <form name="form" method="post" onsubmit="return call_genre_display();">
+        <p id="stringified"></p>
+        <hr>
+        <p id="pretty-print"></p>
         <h2>Filter By Genre</h2>
         <select name="genre_filter" id="genre_filter">
             <!-- <script>
@@ -99,7 +100,7 @@
         <button type="submit">Filter</button>
     </form>
     <br>
-    <p id="display"></p>
+    <p id="genre-display"></p>
     <br>
     <br>
     <br>
