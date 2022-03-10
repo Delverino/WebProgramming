@@ -78,6 +78,7 @@
             s_acc = "";
             genres.forEach((s) => s_acc += "<option id=\"hi\">" + s + "</option>");
             document.getElementById("genre_filter").innerHTML = s_acc;
+            document.getElementById("form-button").addEventListener ("click", call_genre_display, false);
         })
         .catch(err => console.log(err));
     </script>
@@ -97,7 +98,7 @@
                 genres.forEach((s) => document.write("<option id=\"hi\">" + s + "</option>"));
             </script> -->
         </select>
-        <button onclick="call_genre_display();">Filter</button>
+        <button id="form-button">Filter</button>
     </form>
     <br>
     <p id="genre-display"></p>
