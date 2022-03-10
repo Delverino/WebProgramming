@@ -23,7 +23,7 @@
     <script>
     var album;
     fetch("CatPowersSongList.json")
-        .then(res => res.text)
+        .then(res => res.text())
         .then(function(album){
             //test();
             var genres = [];
