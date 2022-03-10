@@ -27,9 +27,8 @@
         .then(function(album){
             //test();
             var genres = [];
-            console.log(album);
+            console.log(album.Songs);
             album = JSON.parse(album);
-            console.log(JSON.stringify(album));
             document.write(JSON.stringify(album));
             document.write("<hr>");
             function println(s){
