@@ -26,6 +26,8 @@
         .then(function(album){
             //test();
             var genres = [];
+            console.log(album);
+            console.log(JSON.stringify(album));
             document.write(JSON.stringify(album));
             document.write("<hr>");
             function println(s){
@@ -74,7 +76,7 @@
             });
             s_acc = "";
             genres.forEach((s) => s_acc += "<option id=\"hi\">" + s + "</option>");
-            document.getElementById("genre-filter").innerHTML = s_acc
+            document.getElementById("genre-filter").innerHTML = s_acc;
         })
         .catch(err => console.log(err));
     </script>
