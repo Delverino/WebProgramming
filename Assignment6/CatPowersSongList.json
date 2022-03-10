@@ -1,18 +1,14 @@
 {
-    "Title": "The Covers Record, Cat Power",
-    "Album": {
-        "Song": [
+    "Songs": [
         {
             "Title": "(I Can't Get No) Satisfaction",
             "Artists": {
             "Artist": "The Rolling Stones"
             },
-            "Genres": {
-            "Genre": [
+            "Genres": [
                 "Pop",
                 "Rock"
-            ]
-            },
+            ],
             "Year": "2015"
         },
         {
@@ -20,9 +16,9 @@
             "Artists": {
             "Artist": "Bob Dylan"
             },
-            "Genres": {
-            "Genre": "Folk"
-            },
+            "Genres": [
+                "Folk"
+            ],
             "Year": "1991"
         },
         {
@@ -30,9 +26,9 @@
             "Artists": {
             "Artist": "Helen Merrill"
             },
-            "Genres": {
-            "Genre": "Folk"
-            },
+            "Genres": [
+                "Folk"
+            ],
             "Year": "1955"
         },
         {
@@ -40,12 +36,10 @@
             "Artists": {
             "Artist": "Cat Power"
             },
-            "Genres": {
-            "Genre": [
+            "Genres": [
                 "Pop",
                 "Rock"
-            ]
-            },
+            ],
             "Year": "2007"
         },
         {
@@ -53,9 +47,9 @@
             "Artists": {
             "Artist": "Michael Hurley"
             },
-            "Genres": {
-            "Genre": "Folk"
-            },
+            "Genres": [
+                "Folk"
+            ],
             "Year": "1970"
         },
         {
@@ -63,12 +57,10 @@
             "Artists": {
             "Artist": "Cat Power"
             },
-            "Genres": {
-            "Genre": [
+            "Genres": [
                 "Pop",
                 "Rock"
-            ]
-            },
+            ],
             "Year": "1996"
         },
         {
@@ -76,12 +68,10 @@
             "Artists": {
             "Artist": "The Velvet Underground"
             },
-            "Genres": {
-            "Genre": [
+            "Genres": [
                 "Pop",
                 "Rock"
-            ]
-            },
+            ],
             "Year": "1970"
         },
         {
@@ -89,9 +79,9 @@
             "Artists": {
             "Artist": "Johnny Mathis"
             },
-            "Genres": {
-            "Genre": "Soft Rock"
-            },
+            "Genres": [
+                "Soft Rock"
+            ],
             "Year": "1957"
         },
         {
@@ -99,12 +89,10 @@
             "Artists": {
             "Artist": "Cat Power"
             },
-            "Genres": {
-            "Genre": [
+            "Genres": [
                 "Pop",
                 "Rock"
-            ]
-            },
+            ],
             "Year": ""
         },
         {
@@ -112,9 +100,9 @@
             "Artists": {
             "Artist": "Bob Dylan"
             },
-            "Genres": {
-            "Genre": "Folk"
-            },
+            "Genres": [
+                "Folk"
+            ],
             "Year": "1991"
         },
         {
@@ -122,9 +110,9 @@
             "Artists": {
             "Artist": "Mississippi John Hurt"
             },
-            "Genres": {
-            "Genre": "Blues"
-            },
+            "Genres": [
+                "Blues"
+            ],
             "Year": "1963"
         },
         {
@@ -135,15 +123,12 @@
                 "The Twilights"
             ]
             },
-            "Genres": {
-            "Genre": [
+            "Genres": [
                 "R & B",
                 "Pop",
                 "Rock"
-            ]
-            },
+            ],
             "Year": "1975"
         }
-        ]
-    }
-    }
+    ]
+}
