@@ -14,6 +14,21 @@
 		background-color: rgb(230, 245, 226);
 		margin-left: 20px;
 	}
+	td.selectQuantity{
+		padding-right: 52px;
+	}
+	td.itemName{
+		padding-right: 10px;
+	}
+	td.selectQuantity{
+		padding-left:0px;
+	}
+	th:first-of-type{
+		padding-left:0px;
+	}
+	th{
+		text-align: left;
+	}
 </style>
 </head>
 
@@ -30,6 +45,23 @@ function MenuItem(name, cost)
 	this.cost=cost;
 }
 
+function nselect(s_name){
+	return "[name=" + s_name + "]";
+}
+
+function Listicle(i)
+{
+	this.s_select = "[name=quan" + i + "]";
+	this.f_cost = menuItems[i].cost;
+	this.s_cost = "tr:nth-of-type("+ (i + 2) +") > td.totalCost > input"; //TODO change to specify
+	//Displays the cost and returns it for bigger calculations
+	this.display = function(){
+		total_cost = $(this.s_select).val() * this.f_cost;
+		$(this.s_cost).val(total_cost);
+		return total_cost;
+	}
+}
+
 menuItems = new Array(
 	new MenuItem("Chicken Chop Suey", 4.5),
 	new MenuItem("Sweet and Sour Pork", 6.25),
@@ -37,6 +69,9 @@ menuItems = new Array(
 	new MenuItem("Moo Shi Chicken", 7.5),
 	new MenuItem("Fried Rice", 2.85)
 );
+
+listicles = new Array();
+
 
 function makeSelect(name, minRange, maxRange)
 {
@@ -52,14 +87,45 @@ function td(content, className="")
 {
 	return "<td class = '" + className + "'>" + content + "</td>";
 }
+
+var delivery = false;
+var pickup;
 $(document).ready(function(){
-	$('[name="p_or_d"]').click(function(){
-		($(this).val() == "delivery") ? $(".address").show(100) : $(".address").hide(100);
+
+	$(document).click(function(){
+		subtotal = 0;
+		for(i=0; i<menuItems.length; i++){
+			subtotal = subtotal + listicles[i].display();
+			tax = subtotal * 0.0625;
+			total = subtotal + tax;
+			$("input#subtotal").val(subtotal);
+			$("input#tax").val(tax);
+			$("input#total").val(total);
+		}
 	});
-	$("select").select(function(){
-		console.log("you made a selection!");
-	})
+	$(document).click();
+
+	$('[name="p_or_d"]').click(function(){
+		delivery = $(this).val() == "delivery";
+		delivery ? $(".address").show(100) : $(".address").hide(100);
+	});
+
+	$("[value='Submit Order']").click(validate);
 })
+
+function validate(){
+	issues = [];
+	number = parseInt($(nselect("phone")).val()).toString();
+
+	if(number.length != 7 && number.length != 10) issues.push("Enter a 7 or 10 digit phone number");
+	if(parseInt($(nselect("subtotal")).val()) <= 0) issues.push("Order at least one item");
+	if(delivery && (!$(nselect("street")).val() || !$(nselect("city")).val()))
+	   issues.push("Enter a street and city for your delivery");
+
+	today = new Date();
+	console.log(today.getHours());
+	console.log(today.getDay());
+}
 
 </script>
 
@@ -88,6 +154,7 @@ $(document).ready(function(){
   var s = "";
   for (i=0; i< menuItems.length; i++)
   {
+	  listicles.push(new Listicle(i));
 	  s += "<tr>";
 	  s += td(makeSelect("quan" + i, 0, 10),"selectQuantity");
 	  s += td(menuItems[i].name, "itemName");
