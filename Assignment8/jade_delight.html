@@ -29,6 +29,10 @@
 	th{
 		text-align: left;
 	}
+	form::after{
+		display: block;
+		margin-top: 20px;
+	}
 </style>
 </head>
 
@@ -60,6 +64,12 @@ function Listicle(i)
 		$(this.s_cost).val(total_cost);
 		return total_cost;
 	}
+	this.num = function(){
+		return $(this.s_select).val();
+	}
+	this.totalcost = function(){
+		return total_cost = $(this.s_select).val() * this.f_cost;
+	}
 }
 
 menuItems = new Array(
@@ -89,7 +99,8 @@ function td(content, className="")
 }
 
 var delivery = false;
-var pickup;
+var tax;
+var total;
 $(document).ready(function(){
 
 	$(document).click(function(){
@@ -99,8 +110,8 @@ $(document).ready(function(){
 			tax = subtotal * 0.0625;
 			total = subtotal + tax;
 			$("input#subtotal").val(subtotal);
-			$("input#tax").val(tax);
-			$("input#total").val(total);
+			$("input#tax").val(tax.toFixed(2));
+			$("input#total").val(total.toFixed(2));
 		}
 	});
 	$(document).click();
@@ -113,18 +124,48 @@ $(document).ready(function(){
 	$("[value='Submit Order']").click(validate);
 })
 
+function p (s_name, s_content){
+	return "<p>" + s_name + ": " + s_content + "</p>";
+}
+
 function validate(){
+	disp = "";
 	issues = [];
 	number = parseInt($(nselect("phone")).val()).toString();
+	subtotal = parseInt($(nselect("subtotal")).val())
 
-	if(number.length != 7 && number.length != 10) issues.push("Enter a 7 or 10 digit phone number");
-	if(parseInt($(nselect("subtotal")).val()) <= 0) issues.push("Order at least one item");
+	if(!$(nselect("lname")).val()) issues.push("enter your last name.")
+	if(number.length != 7 && number.length != 10) issues.push("enter a 7 or 10 digit phone number.");
+	if(subtotal <= 0) issues.push("order at least one item.");
 	if(delivery && (!$(nselect("street")).val() || !$(nselect("city")).val()))
-	   issues.push("Enter a street and city for your delivery");
+	   issues.push("enter a street and city for your delivery.");
 
-	today = new Date();
-	console.log(today.getHours());
-	console.log(today.getDay());
+	now = new Date();
+	now.setMinutes(now.getMinutes() + (delivery ? 30 : 15));
+
+	for(i=0; i<listicles.length; i++){
+		num = listicles[i].num();
+		cost = listicles[i].totalcost().toFixed(2);
+		console.log(num);
+		if(num > 0){
+			disp += p(num + " " + menuItems[i].name, " $" + cost);
+		}
+	}
+
+	disp += p("subtotal", "$" + subtotal.toFixed(2));
+	disp += p("taxes", "$" + tax.toFixed(2));
+	disp += p("total", "$" + total.toFixed(2));
+
+	disp += p((delivery ? "delivery" : "pickup") + " time", (now).toLocaleTimeString("en-US"));
+	
+	if(issues.length > 0){
+		alert("Please " + issues[0]);
+	} else {
+		alert("Thanks for ordering from Jade Delight! Please review your order.");
+		var newwindow= window.open('', '', 'width=500, height=500');
+		newwindow.document.write(disp);
+	}
+
 }
 
 </script>
